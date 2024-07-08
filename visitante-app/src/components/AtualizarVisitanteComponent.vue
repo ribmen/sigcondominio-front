@@ -56,7 +56,7 @@ export default {
     },
     async atualizarVisitante() {
       try {
-        const response = await axios.put(`http://localhost:8081/visitante/${this.visitanteId}`, this.visitante);
+        const response = await axios.put(`http://localhost:8081/visitantes/${this.visitanteId}`, this.visitante);
         if (response.status === 200) {
           alert('Visitante atualizado com sucesso');
         } else {

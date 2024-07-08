@@ -21,7 +21,7 @@
           <!-- Botões de ação -->
           <div class="d-flex">
             <router-link to="/login"><button class="btn btn-outline-light me-2">Sair</button></router-link>
-            <router-link to="/registro"><button class="btn btn-primary">Registrar</button></router-link>
+            <router-link to="/login"><button class="btn btn-primary">Registrar</button></router-link>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
               <h2 class="card-title">Ações</h2>
             </div>
             <div class="card-body">
-              <AdicionarVisitanteComponent/>
+              <!-- listening... -->                     <AdicionarVisitanteComponent @visitante-adicionado="listarVisitantes"/>
               <br>
               <AtualizarVisitanteComponent/>
             </div>
@@ -78,6 +78,7 @@
 import ListarVisitantesComponent from './ListarVisitantesComponent.vue';
 import AdicionarVisitanteComponent from './AdicionarVisitanteComponent.vue';
 import AtualizarVisitanteComponent from './AtualizarVisitanteComponent.vue';
+import axios from 'axios';
 
 export default {
   name: 'TelaInicial',
@@ -85,6 +86,18 @@ export default {
     ListarVisitantesComponent,
     AdicionarVisitanteComponent,
     AtualizarVisitanteComponent
+  }, 
+  methods: {
+    async listarVisitantes() {
+      try {
+        const response = await axios.get('http://localhost:8081/visitantes')
+        this.$refs.ListarVisitantesComponent.visitantes = response.data;
+      }
+      catch (error) {
+        console.error('Erro ao atualizar lista de visitantes: ', error);
+        alert('Falha ao atualizar lista de visitantes.');
+      }
+    }
   }
 };
 </script>

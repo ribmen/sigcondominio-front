@@ -10,9 +10,11 @@
   </nav>
 
   <div v-if="visitante">
+    <br>
     <h2>Dados: </h2>
     <p>Nome: {{ visitante.nome }}</p>
     <p>CPF: {{ visitante.cpf }}</p>
+    <br>
   </div>
 </template>
 

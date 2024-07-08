@@ -38,7 +38,9 @@ export default {
           alert('Visitante adicionado com sucesso!');
           this.novoVisitante.nome = '';
           this.novoVisitante.cpf = '';
-          this.listarVisitantes();
+
+          // Chamar a função listarVisitantes() do componente pai (TelaInicialComponent)
+          //this.$emit('visitante-adicionado');
         }
       } catch (error) {
         console.error('Erro ao adicionar visitante:', error);
